@@ -79,7 +79,7 @@ with col2:
     authors_encoded = st.number_input("Authors Encoded", min_value=0, max_value=11000, step=1)
     language_code_encoded = st.number_input("Language Code Encoded", min_value=0, max_value=5, step=1)
     publisher_encoded = st.number_input("Publisher Encoded", min_value=0, max_value=3000, step=1)
-    years = st.number_input("Year of Publication", min_value=1990, max_value=2030, step=1)
+    years = st.slider("Year of Publication", min_value=1990, max_value=2030, step=1)
 
 st.markdown('</div>', unsafe_allow_html=True)
 
