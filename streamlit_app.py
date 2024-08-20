@@ -9,13 +9,19 @@ with open('knn_books.pkl', 'rb') as file:
 # Streamlit app title and description with HTML/CSS
 st.markdown("""
     <style>
-        body {
-        background-image: url('https://i.guim.co.uk/img/media/77e3e93d6571da3a5d77f74be57e618d5d930430/0_0_2560_1536/master/2560.jpg?width=1900&dpr=1&s=none');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        font-family: Arial, sans-serif;
-    }
+        [data-testid="stAppViewContainer"]{
+            background-image: url('https://i.guim.co.uk/img/media/77e3e93d6571da3a5d77f74be57e618d5d930430/0_0_2560_1536/master/2560.jpg?width=1900&dpr=1&s=none');
+            background-size: cover; /* Ensures the image covers the whole background */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            }
+        .st-emotion-cache-1wmy9hl {
+            display: flex;
+            background-color: ivory;
+            flex-direction: column;
+            margin: 10px;
+            flex: 1 1 0%;
+}
         .main-title {
             font-size: 50px;
             color: #4A90E2;
