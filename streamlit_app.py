@@ -64,10 +64,10 @@ st.markdown("### 📊 Book Features")
 col1, col2 = st.columns(2)
 
 with col1:
-    average_rating = st.number_input("Average Rating", min_value=1.0, max_value=5.0, step=0.1)
-    num_pages = st.number_input("Number of Pages", min_value=60, max_value=2000, step=1)
-    ratings_count = st.number_input("Ratings Count", min_value=20, max_value=10000, step=1)
-    text_reviews_count = st.number_input("Text Reviews Count", min_value=0, max_value=1000, step=1)
+    average_rating = st.slider("Average Rating", min_value=1.0, max_value=5.0, step=0.05)
+    num_pages = st.slider("Number of Pages", min_value=1, max_value=2000, step=1)
+    ratings_count = st.slider("Ratings Count", min_value=0, max_value=1000, step=10)
+    text_reviews_count = st.slider("Text Reviews Count", min_value=0, max_value=1000, step=1)
 
 with col2:
     authors_encoded = st.number_input("Authors Encoded", min_value=0, max_value=2159, step=1)
