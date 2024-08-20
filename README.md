@@ -9,6 +9,6 @@ Depending upon all of the above, the app will return a result with a probability
 
 ##Link to App
 
-[[![Streamlit App](https://simantknnbooks.streamlit.app/)]
+https://simantknnbooks.streamlit.app/
 
 
