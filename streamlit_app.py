@@ -4,13 +4,10 @@ import pickle
 import joblib
 
 # Load the trained KNN model
-#"""with open('knn_books.pkl', 'rb') as file:
-#       model = pickle.load(file)"""
+
 model=joblib.load('knn_books.pkl')
 
-#"""with open('label_encoders.pkl', 'rb') as file:
-    #encoders = pickle.load(file)"""
-
+#Load the encoders file
 encoders=joblib.load('label_encoders.pkl')
 
 
