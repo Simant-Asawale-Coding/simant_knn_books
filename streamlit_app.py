@@ -1,10 +1,23 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import joblib
 
-# Load the trained KNN model and scaler
-with open('knn_books.pkl', 'rb') as file:
-    model = pickle.load(file)
+# Load the trained KNN model
+#"""with open('knn_books.pkl', 'rb') as file:
+#       model = pickle.load(file)"""
+model=joblib.load('knn_books.pkl')
+
+#"""with open('label_encoders.pkl', 'rb') as file:
+    #encoders = pickle.load(file)"""
+
+encoders=joblib.load('label_encoders.pkl')
+
+
+#loading the encoders individually
+author_encoder = encoders['authors']
+language_encoder = encoders['language_code']
+publisher_encoder = encoders['publisher']
 
 # Streamlit app title and description with HTML/CSS
 st.markdown("""
@@ -72,14 +85,18 @@ col1, col2 = st.columns(2)
 with col1:
     average_rating = st.slider("Average Rating", min_value=1.0, max_value=5.0, step=0.05)
     num_pages = st.slider("Number of Pages", min_value=1, max_value=2000, step=1)
-    ratings_count = st.slider("Ratings Count", min_value=0, max_value=10000, step=10)
-    text_reviews_count = st.slider("Text Reviews Count", min_value=0, max_value=10000, step=1)
+    ratings_count = st.slider("Ratings Count", min_value=0, max_value=1000, step=10)
+    text_reviews_count = st.slider("Text Reviews Count", min_value=0, max_value=1000, step=1)
 
 with col2:
-    authors_encoded = st.number_input("Authors Encoded", min_value=0, max_value=11000, step=1)
-    language_code_encoded = st.number_input("Language Code Encoded", min_value=0, max_value=5, step=1)
-    publisher_encoded = st.number_input("Publisher Encoded", min_value=0, max_value=3000, step=1)
-    years = st.slider("Year of Publication", min_value=1990, max_value=2030, step=1)
+    selected_author = st.selectbox("Select Author", author_encoder.classes_)
+    selected_language = st.selectbox("Select Language", language_encoder.classes_)
+    selected_publisher = st.selectbox("Select Publisher", publisher_encoder.classes_)
+    years = st.slider("Year of Publication", min_value=1990, max_value=2015, step=1)
+
+authors_encoded = author_encoder.transform([selected_author])[0]
+language_code_encoded = language_encoder.transform([selected_language])[0]
+publisher_encoded = publisher_encoder.transform([selected_publisher])[0]
 
 st.markdown('</div>', unsafe_allow_html=True)
 
